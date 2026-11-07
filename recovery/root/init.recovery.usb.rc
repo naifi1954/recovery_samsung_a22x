@@ -67,6 +67,7 @@ on property:sys.usb.config=none
     rm /config/usb_gadget/g1/configs/b.1/ffs.mtp
     setprop sys.usb.state ${sys.usb.config}
 
+# For Sideload
 on property:sys.usb.config=sideload && property:sys.usb.ffs.ready=1
     write /config/usb_gadget/g1/idProduct 0xD001
     write /config/usb_gadget/g1/configs/b.1/strings/0x409/configuration "adb"
@@ -74,6 +75,7 @@ on property:sys.usb.config=sideload && property:sys.usb.ffs.ready=1
     write /config/usb_gadget/g1/UDC ${sys.usb.controller}
     setprop sys.usb.state ${sys.usb.config}
 
+# For ADB
 on property:sys.usb.config=adb && property:sys.usb.ffs.ready=1
     write /config/usb_gadget/g1/idProduct 0xD001
     write /config/usb_gadget/g1/configs/b.1/strings/0x409/configuration "adb"
@@ -81,6 +83,7 @@ on property:sys.usb.config=adb && property:sys.usb.ffs.ready=1
     write /config/usb_gadget/g1/UDC ${sys.usb.controller}
     setprop sys.usb.state ${sys.usb.config}
 
+# For MTP USB
 on property:sys.usb.config=mtp,adb && property:sys.usb.ffs.ready=1
     write /config/usb_gadget/g1/idProduct 0x6860
     write /config/usb_gadget/g1/configs/b.1/strings/0x409/configuration "mtp,adb"
@@ -89,6 +92,7 @@ on property:sys.usb.config=mtp,adb && property:sys.usb.ffs.ready=1
     write /config/usb_gadget/g1/UDC ${sys.usb.controller}
     setprop sys.usb.state ${sys.usb.config}
 
+# For Fastbootd
 on property:sys.usb.config=fastboot && property:sys.usb.ffs.ready=1
     write /config/usb_gadget/g1/idProduct 0xD001
     write /config/usb_gadget/g1/configs/b.1/strings/0x409/configuration "fastboot"
